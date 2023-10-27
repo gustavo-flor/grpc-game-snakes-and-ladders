@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.github.gustavoflor.sal.protobuf";
+
+message Dice {
+  int32 value = 1;
+}
+
+message Player {
+  string name = 1;
+  int32 position = 2;
+}
+
+message State {
+  repeated Player players = 1;
+}
+
+service GameService {
+
+  rpc play(stream Dice) returns (stream State);
+
+}
